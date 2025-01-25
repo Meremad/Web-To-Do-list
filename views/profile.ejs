@@ -1,0 +1,19 @@
+<%- include("header") -%>
+
+<div class="box" id="heading">
+    <h1>Profile</h1>
+</div>
+
+<div class="box">
+    <form action="/profile" method="POST">
+        <div class="item">
+            <input type="text" name="username" placeholder="Username" value="<%= user.username %>" required>
+        </div>
+        <div class="item">
+            <input type="password" name="password" placeholder="New Password">
+        </div>
+        <button type="submit">Update Profile</button>
+    </form>
+</div>
+
+<%- include("footer") -%>

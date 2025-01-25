@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>To Do List</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/style.css'>
+</head>
+<body>
+    <nav>
+        <% if (typeof user !== 'undefined') { %>
+            <a href="/"> Home </a> |
+            <a href="/work"> Work </a> |
+            <a href="/about"> About </a> |
+            <a href="/profile"> Profile </a> |
+            <a href="/logout"> Logout </a>
+        <% } else { %>
+            <a href="/login"> Login </a> |
+            <a href="/register"> Register </a>
+        <% } %>
+    </nav>
