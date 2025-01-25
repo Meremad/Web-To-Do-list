@@ -9,12 +9,15 @@ const app = express();
 
 app.set('view engine', 'ejs');
 
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(express.static("public"));
+const session = require('express-session');
+const MongoStore = require('connect-mongo');
+
 app.use(session({
   secret: 'your secret key',
   resave: false,
-  saveUninitialized: false
+  saveUninitialized: false,
+  store: MongoStore.create({ mongoUrl: process.env.MONGODB_URI }),
+  cookie: { maxAge: 1000 * 60 * 60 * 24 } // 1 day
 }));
 
 mongoose.connect("mongodb+srv://meremad:YMjb67MrtVGvWOiq@mertay.a4syn.mongodb.net/todolistDB?retryWrites=true&w=majority&appName=Mertay")
@@ -246,7 +249,10 @@ app.get('/logout', (req, res) => {
   });
 });
 
+
+
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, function(){
+
+app.listen(PORT, '0.0.0.0', function(){
     console.log(`Server is running on port ${PORT}`);
 });
